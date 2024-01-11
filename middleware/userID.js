@@ -6,7 +6,6 @@ const uIDMiddleware = (req, res, next) => {
     maxAge: 30 * 24 * 60 * 60 * 1000,
     secure: process.env.NODE_ENV === "production",
     httpOnly: true,
-    sameSite: "strict",
   }); // Cookie lasts for 30 days
   req.userId = userId;
   next();
