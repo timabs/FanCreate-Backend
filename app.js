@@ -11,6 +11,22 @@ const conversations = require("./routes/conversationsRouter");
 const messages = require("./routes/messagesRouter");
 const contacts = require("./routes/contactsRouter");
 const images = require("./routes/imagesRouter");
+const cors = require("cors");
+const whitelist = ["http://localhost:3000"];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  optionsSuccessStatus: 200,
+};
+
+app.options("*", cors(corsOptions));
+
+app.use(cors(corsOptions));
 
 const connectDB = require("./database/connect");
 require("dotenv").config();
