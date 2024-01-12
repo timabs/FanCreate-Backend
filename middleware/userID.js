@@ -4,7 +4,7 @@ const uIDMiddleware = (req, res, next) => {
   const userId = req.cookies.userId || generateNewUserId();
   res.cookie("userId", userId, {
     maxAge: 30 * 24 * 60 * 60 * 1000,
-    secure: req.secure || req.headers["x-forwarded-proto"] === "https",
+    secure: true,
     httpOnly: true,
     sameSite: "None",
   }); // Cookie lasts for 30 days
