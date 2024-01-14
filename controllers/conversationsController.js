@@ -307,6 +307,24 @@ const updateBgImg = async (req, res) => {
       .json({ message: `Error updating background image: ${error}` });
   }
 };
+
+const deleteBgImg = async (req, res) => {
+  const conversationId = req.params.conversationId;
+  try {
+    const result = await Conversationsbase.updateOne(
+      { _id: conversationId },
+      { $unset: { bgImg: "" } }
+    );
+    res.status(201).json({
+      result,
+      message: "Background image deleted successfully",
+    });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: `Error deleting background image: ${error}` });
+  }
+};
 module.exports = {
   getAllConversations,
   createNewConversation,
@@ -321,4 +339,5 @@ module.exports = {
   editGroupChatPfp,
   updateSysDetails,
   updateBgImg,
+  deleteBgImg,
 };
