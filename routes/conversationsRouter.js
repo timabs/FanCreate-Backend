@@ -13,6 +13,7 @@ const {
   editGroupChatName,
   editGroupChatPfp,
   updateSysDetails,
+  updateBgImg,
 } = require("../controllers/conversationsController");
 
 router
@@ -23,6 +24,7 @@ router
   .delete(deleteConvo);
 router.route("/:conversationId").patch(editGroupChatName);
 router.route("/:conversationId/pfp").patch(editGroupChatPfp);
+router.route("/:conversationId/bg").patch(updateBgImg);
 router.route("/:conversationId/sys-details").patch(updateSysDetails);
 router.route("/:conversationId/:participantId").delete(deleteUserFromConvo);
 router.route("/:conversationId/messages").get(fetchMessages);

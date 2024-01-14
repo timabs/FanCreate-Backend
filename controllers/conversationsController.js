@@ -287,6 +287,26 @@ const updateSysDetails = async (req, res) => {
     res.status(500).json({ message: `Error editing system details: ${error}` });
   }
 };
+
+const updateBgImg = async (req, res) => {
+  const conversationId = req.params.conversationId;
+  const { bgImgLink } = req.body;
+  try {
+    const updatedBgImg = await Conversationsbase.findByIdAndUpdate(
+      conversationId,
+      { bgImg: bgImgLink },
+      { new: true }
+    );
+    res.status(201).json({
+      updatedBgImg,
+      message: "Background image updated successfully",
+    });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: `Error updating background image: ${error}` });
+  }
+};
 module.exports = {
   getAllConversations,
   createNewConversation,
@@ -300,4 +320,5 @@ module.exports = {
   editGroupChatName,
   editGroupChatPfp,
   updateSysDetails,
+  updateBgImg,
 };

@@ -43,6 +43,10 @@ const conversationSchema = new mongoose.Schema({
       required: false,
     },
   },
+  bgImg: {
+    type: String,
+    required: false,
+  },
 });
 
 conversationSchema.path("participants").validate(function (participants) {
