@@ -11,6 +11,7 @@ const conversations = require("./routes/conversationsRouter");
 const messages = require("./routes/messagesRouter");
 const contacts = require("./routes/contactsRouter");
 const images = require("./routes/imagesRouter");
+const form = require("./routes/contactFormRouter");
 const cors = require("cors");
 const whitelist = ["https://fancreate.netlify.app"];
 const corsOptions = {
@@ -47,6 +48,7 @@ app.use("/api/v1/conversations", conversations);
 app.use("/api/v1/messages", messages);
 app.use("/api/v1/contacts", contacts);
 app.use("/api/v1/images", images);
+app.use("/api/v1/form", form);
 
 const start = async () => {
   try {
