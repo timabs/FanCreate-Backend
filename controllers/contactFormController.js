@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 const pass = process.env.EMAILPASS;
 const user = process.env.EMAIL;
 
-export const sendEmail = async (req, res) => {
+const sendEmail = async (req, res) => {
   const transporter = nodemailer.createTransport({
     host: "smtp.elasticemail.com",
     port: 2525,
@@ -30,4 +30,8 @@ export const sendEmail = async (req, res) => {
       res.send("success");
     }
   });
+};
+
+module.exports = {
+  sendEmail,
 };
