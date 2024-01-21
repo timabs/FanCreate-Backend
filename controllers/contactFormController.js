@@ -13,13 +13,13 @@ const sendEmail = async (req, res) => {
   });
   const mailOptions = {
     from: {
-      name: req.body.name,
+      name: req.body.formData.name,
       address: user,
     },
     to: user,
-    subject: `Message from ${req.body.email}: ${req.body.subject}`,
-    text: req.body.content,
-    replyTo: req.body.email,
+    subject: `Message from ${req.body.formData.email}`,
+    text: req.body.formData.content,
+    replyTo: req.body.formData.email,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
