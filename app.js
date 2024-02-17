@@ -13,7 +13,7 @@ const contacts = require("./routes/contactsRouter");
 const images = require("./routes/imagesRouter");
 const form = require("./routes/contactFormRouter");
 const cors = require("cors");
-const whitelist = ["https://fancreate.netlify.app"];
+const whitelist = ["https://fancreate.netlify.app", "http://localhost:3000"];
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {
